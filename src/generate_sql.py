@@ -149,7 +149,7 @@ def generate_table_sql(table: Table) -> str:
         constraint = " PRIMARY KEY" if (col.name == pk_col) else ""
         comma = "," if i < num_cols - 1 else ""
         comment_str = f"  -- {col.comment}" if col.comment else ""
-        col_defs.append(f"    {col.name} {pg_type}{constraint}{comma}{comment_str}")
+        col_defs.append(f"    \"{col.name}\" {pg_type}{constraint}{comma}{comment_str}")
 
     lines.append("\n".join(col_defs))
     lines.append(");")
@@ -159,7 +159,7 @@ def generate_table_sql(table: Table) -> str:
     for col in table.columns:
         if col.comment:
             lines.append(
-                f"COMMENT ON COLUMN {qualified}.{col.name} IS '{col.comment}';"
+                f"COMMENT ON COLUMN {qualified}.\"{col.name}\" IS '{col.comment}';"
             )
 
     if any(c.comment for c in table.columns):
@@ -169,11 +169,11 @@ def generate_table_sql(table: Table) -> str:
     if not table.is_primary and table.columns:
         first_col = table.columns[0].name
         idx_name = f"idx_{table.name}_{first_col}".lower()
-        lines.append(f"CREATE INDEX {idx_name} ON {qualified} ({first_col});")
+        lines.append(f"CREATE INDEX {idx_name} ON {qualified} (\"{first_col}\");")
         # Index on RowID if present
         if any(c.name == "RowID" for c in table.columns):
             lines.append(
-                f"CREATE INDEX idx_{table.name.lower()}_rowid ON {qualified} (RowID);"
+                f"CREATE INDEX idx_{table.name.lower()}_rowid ON {qualified} (\"RowID\");"
             )
         lines.append("")
 
@@ -198,17 +198,13 @@ def main():
         with open(path, "w") as f:
             f.write(sql)
 
-    justfile = generate_justfile(len(tables))
-    with open("justfile", "w") as f:
-        f.write(justfile)
-
     # Clean up old load_all.sql if it exists
     load_all_path = os.path.join(OUTPUT_DIR, "load_all.sql")
     if os.path.exists(load_all_path):
         os.remove(load_all_path)
 
     total_cols = sum(len(t.columns) for t in tables)
-    print(f"Generated {len(tables)} table scripts in {OUTPUT_DIR}/ + justfile")
+    print(f"Generated {len(tables)} table scripts in {OUTPUT_DIR}/")
     print(f"Total columns: {total_cols}")
     print(f"Primary tables: {[t.name for t in tables if t.is_primary]}")
     print(f"Relation tables: {len([t for t in tables if not t.is_primary])}")
