@@ -27,7 +27,7 @@ COMMENT ON COLUMN main.CompanyInvLeadPartnerRelation."DealDate" IS 'Date of the 
 COMMENT ON COLUMN main.CompanyInvLeadPartnerRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyInvLeadPartnerRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyInvLeadPartnerRelation FROM 'data/CompanyInvLeadPartnerRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companyinvleadpartnerrelation_companyid ON main.CompanyInvLeadPartnerRelation ("CompanyID");
 CREATE INDEX idx_companyinvleadpartnerrelation_rowid ON main.CompanyInvLeadPartnerRelation ("RowID");
-
-\COPY main.CompanyInvLeadPartnerRelation FROM 'data/CompanyInvLeadPartnerRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

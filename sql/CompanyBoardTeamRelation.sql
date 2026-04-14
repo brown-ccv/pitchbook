@@ -35,7 +35,7 @@ COMMENT ON COLUMN main.CompanyBoardTeamRelation."EndDate" IS 'Date the person le
 COMMENT ON COLUMN main.CompanyBoardTeamRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyBoardTeamRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyBoardTeamRelation FROM 'data/CompanyBoardTeamRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companyboardteamrelation_companyid ON main.CompanyBoardTeamRelation ("CompanyID");
 CREATE INDEX idx_companyboardteamrelation_rowid ON main.CompanyBoardTeamRelation ("RowID");
-
-\COPY main.CompanyBoardTeamRelation FROM 'data/CompanyBoardTeamRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

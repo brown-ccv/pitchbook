@@ -35,7 +35,7 @@ COMMENT ON COLUMN main.InvestorLocationRelation."OfficeFax" IS 'Location''s offi
 COMMENT ON COLUMN main.InvestorLocationRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.InvestorLocationRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.InvestorLocationRelation FROM 'data/InvestorLocationRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_investorlocationrelation_investorid ON main.InvestorLocationRelation ("InvestorID");
 CREATE INDEX idx_investorlocationrelation_rowid ON main.InvestorLocationRelation ("RowID");
-
-\COPY main.InvestorLocationRelation FROM 'data/InvestorLocationRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

@@ -37,7 +37,7 @@ COMMENT ON COLUMN main.LPBoardTeamRelation."EndDate" IS 'Date the team member le
 COMMENT ON COLUMN main.LPBoardTeamRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.LPBoardTeamRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.LPBoardTeamRelation FROM 'data/LPBoardTeamRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_lpboardteamrelation_limitedpartnerid ON main.LPBoardTeamRelation ("LimitedPartnerID");
 CREATE INDEX idx_lpboardteamrelation_rowid ON main.LPBoardTeamRelation ("RowID");
-
-\COPY main.LPBoardTeamRelation FROM 'data/LPBoardTeamRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

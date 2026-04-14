@@ -17,7 +17,7 @@ COMMENT ON COLUMN main.InvestorTypeRelation."IsPrimary" IS 'Investor type is pri
 COMMENT ON COLUMN main.InvestorTypeRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.InvestorTypeRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.InvestorTypeRelation FROM 'data/InvestorTypeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_investortyperelation_investorid ON main.InvestorTypeRelation ("InvestorID");
 CREATE INDEX idx_investortyperelation_rowid ON main.InvestorTypeRelation ("RowID");
-
-\COPY main.InvestorTypeRelation FROM 'data/InvestorTypeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

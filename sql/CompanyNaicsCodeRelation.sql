@@ -21,7 +21,7 @@ COMMENT ON COLUMN main.CompanyNaicsCodeRelation."NaicsIndustryDescription" IS 'T
 COMMENT ON COLUMN main.CompanyNaicsCodeRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyNaicsCodeRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyNaicsCodeRelation FROM 'data/CompanyNaicsCodeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companynaicscoderelation_companyid ON main.CompanyNaicsCodeRelation ("CompanyID");
 CREATE INDEX idx_companynaicscoderelation_rowid ON main.CompanyNaicsCodeRelation ("RowID");
-
-\COPY main.CompanyNaicsCodeRelation FROM 'data/CompanyNaicsCodeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

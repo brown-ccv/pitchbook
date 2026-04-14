@@ -21,7 +21,7 @@ COMMENT ON COLUMN main.PersonEducationRelation."GraduatingYear" IS 'Year of grad
 COMMENT ON COLUMN main.PersonEducationRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.PersonEducationRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.PersonEducationRelation FROM 'data/PersonEducationRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_personeducationrelation_personid ON main.PersonEducationRelation ("PersonID");
 CREATE INDEX idx_personeducationrelation_rowid ON main.PersonEducationRelation ("RowID");
-
-\COPY main.PersonEducationRelation FROM 'data/PersonEducationRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

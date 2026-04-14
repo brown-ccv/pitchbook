@@ -21,7 +21,7 @@ COMMENT ON COLUMN main.CompanyMarketAnalysisRelation."ACVReportLastUpdated" IS '
 COMMENT ON COLUMN main.CompanyMarketAnalysisRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyMarketAnalysisRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyMarketAnalysisRelation FROM 'data/CompanyMarketAnalysisRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companymarketanalysisrelation_companyid ON main.CompanyMarketAnalysisRelation ("CompanyID");
 CREATE INDEX idx_companymarketanalysisrelation_rowid ON main.CompanyMarketAnalysisRelation ("RowID");
-
-\COPY main.CompanyMarketAnalysisRelation FROM 'data/CompanyMarketAnalysisRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

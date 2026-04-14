@@ -33,7 +33,7 @@ COMMENT ON COLUMN main.PersonPositionRelation."EndDate" IS 'Date the person ende
 COMMENT ON COLUMN main.PersonPositionRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.PersonPositionRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.PersonPositionRelation FROM 'data/PersonPositionRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_personpositionrelation_personid ON main.PersonPositionRelation ("PersonID");
 CREATE INDEX idx_personpositionrelation_rowid ON main.PersonPositionRelation ("RowID");
-
-\COPY main.PersonPositionRelation FROM 'data/PersonPositionRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

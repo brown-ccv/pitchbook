@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS main.ServiceProvider CASCADE;
 
 CREATE TABLE main.ServiceProvider (
-    "ServiceProviderID" text PRIMARY KEY,  -- Primary key for the service provider. By default the unique PitchBook ID (PbID) 
+    "ServiceProviderID" text,  -- Primary key for the service provider. By default the unique PitchBook ID (PbID) 
     "ServiceProviderName" text,  -- Name of the service provider
     "ServiceProviderFormerName" text,  -- Comma separated list of former name(s) of the service provider
     "ServiceProviderLegalName" text,  -- Legal name of the service provider
@@ -114,3 +114,5 @@ COMMENT ON COLUMN main.ServiceProvider."RowID" IS 'Unique identifier for the row
 COMMENT ON COLUMN main.ServiceProvider."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.ServiceProvider FROM 'data/ServiceProvider.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.ServiceProvider ADD PRIMARY KEY ("ServiceProviderID");

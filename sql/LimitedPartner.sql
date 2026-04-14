@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS main.LimitedPartner CASCADE;
 
 CREATE TABLE main.LimitedPartner (
-    "LimitedPartnerID" text PRIMARY KEY,  -- Primary key for the limited partner. By default the unique PitchBook ID (PbID) w
+    "LimitedPartnerID" text,  -- Primary key for the limited partner. By default the unique PitchBook ID (PbID) w
     "LimitedPartnerName" text,  -- Name of the limited partner
     "LimitedPartnerFormerName" text,  -- Former name(s) of the limited partner
     "LimitedPartnerLegalName" text,  -- Legal name of the limited partner
@@ -224,3 +224,5 @@ COMMENT ON COLUMN main.LimitedPartner."RowID" IS 'Unique identifier for the row.
 COMMENT ON COLUMN main.LimitedPartner."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.LimitedPartner FROM 'data/LimitedPartner.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.LimitedPartner ADD PRIMARY KEY ("LimitedPartnerID");

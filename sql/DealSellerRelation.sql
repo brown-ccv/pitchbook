@@ -33,7 +33,7 @@ COMMENT ON COLUMN main.DealSellerRelation."TimeToExit" IS 'Time in years before 
 COMMENT ON COLUMN main.DealSellerRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.DealSellerRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.DealSellerRelation FROM 'data/DealSellerRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_dealsellerrelation_dealid ON main.DealSellerRelation ("DealID");
 CREATE INDEX idx_dealsellerrelation_rowid ON main.DealSellerRelation ("RowID");
-
-\COPY main.DealSellerRelation FROM 'data/DealSellerRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

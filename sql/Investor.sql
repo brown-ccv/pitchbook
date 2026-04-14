@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS main.Investor CASCADE;
 
 CREATE TABLE main.Investor (
-    "InvestorID" text PRIMARY KEY,  -- Primary key for the investor. By default the unique PitchBook ID (PbID) will be 
+    "InvestorID" text,  -- Primary key for the investor. By default the unique PitchBook ID (PbID) will be 
     "InvestorName" text,  -- Name of the investor
     "InvestorAlsoKnownAs" text,  -- Alternative names for the investor
     "InvestorFormerName" text,  -- Former Name(s) of the investor
@@ -288,3 +288,5 @@ COMMENT ON COLUMN main.Investor."RowID" IS 'Unique identifier for the row. This 
 COMMENT ON COLUMN main.Investor."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.Investor FROM 'data/Investor.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.Investor ADD PRIMARY KEY ("InvestorID");

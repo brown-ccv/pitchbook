@@ -53,7 +53,7 @@ COMMENT ON COLUMN main.CompanySimilarRelation."SimilarCompanyHQCountry" IS 'For 
 COMMENT ON COLUMN main.CompanySimilarRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanySimilarRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanySimilarRelation FROM 'data/CompanySimilarRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companysimilarrelation_companyid ON main.CompanySimilarRelation ("CompanyID");
 CREATE INDEX idx_companysimilarrelation_rowid ON main.CompanySimilarRelation ("RowID");
-
-\COPY main.CompanySimilarRelation FROM 'data/CompanySimilarRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

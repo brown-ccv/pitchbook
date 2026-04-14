@@ -15,7 +15,7 @@ COMMENT ON COLUMN main.CompanyCikCodeRelation."CikCode" IS 'Central Index Key (C
 COMMENT ON COLUMN main.CompanyCikCodeRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyCikCodeRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyCikCodeRelation FROM 'data/CompanyCikCodeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companycikcoderelation_companyid ON main.CompanyCikCodeRelation ("CompanyID");
 CREATE INDEX idx_companycikcoderelation_rowid ON main.CompanyCikCodeRelation ("RowID");
-
-\COPY main.CompanyCikCodeRelation FROM 'data/CompanyCikCodeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

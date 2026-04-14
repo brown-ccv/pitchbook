@@ -31,7 +31,7 @@ COMMENT ON COLUMN main.FundLPCommitmentRelation."Comments" IS 'Additional notes 
 COMMENT ON COLUMN main.FundLPCommitmentRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.FundLPCommitmentRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.FundLPCommitmentRelation FROM 'data/FundLPCommitmentRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_fundlpcommitmentrelation_fundid ON main.FundLPCommitmentRelation ("FundID");
 CREATE INDEX idx_fundlpcommitmentrelation_rowid ON main.FundLPCommitmentRelation ("RowID");
-
-\COPY main.FundLPCommitmentRelation FROM 'data/FundLPCommitmentRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

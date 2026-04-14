@@ -21,7 +21,7 @@ COMMENT ON COLUMN main.CompanyIndustryRelation."IsPrimary" IS '''Yes'' if indust
 COMMENT ON COLUMN main.CompanyIndustryRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyIndustryRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyIndustryRelation FROM 'data/CompanyIndustryRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companyindustryrelation_companyid ON main.CompanyIndustryRelation ("CompanyID");
 CREATE INDEX idx_companyindustryrelation_rowid ON main.CompanyIndustryRelation ("RowID");
-
-\COPY main.CompanyIndustryRelation FROM 'data/CompanyIndustryRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

@@ -37,7 +37,7 @@ COMMENT ON COLUMN main.ServiceProviderBoardTeamRelation."EndDate" IS 'Date the t
 COMMENT ON COLUMN main.ServiceProviderBoardTeamRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.ServiceProviderBoardTeamRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.ServiceProviderBoardTeamRelation FROM 'data/ServiceProviderBoardTeamRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_serviceproviderboardteamrelation_serviceproviderid ON main.ServiceProviderBoardTeamRelation ("ServiceProviderID");
 CREATE INDEX idx_serviceproviderboardteamrelation_rowid ON main.ServiceProviderBoardTeamRelation ("RowID");
-
-\COPY main.ServiceProviderBoardTeamRelation FROM 'data/ServiceProviderBoardTeamRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

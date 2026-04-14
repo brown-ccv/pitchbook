@@ -21,7 +21,7 @@ COMMENT ON COLUMN main.InvestorInvestDealRelation."LastInvestment" IS 'Date of t
 COMMENT ON COLUMN main.InvestorInvestDealRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.InvestorInvestDealRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.InvestorInvestDealRelation FROM 'data/InvestorInvestDealRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_investorinvestdealrelation_investorid ON main.InvestorInvestDealRelation ("InvestorID");
 CREATE INDEX idx_investorinvestdealrelation_rowid ON main.InvestorInvestDealRelation ("RowID");
-
-\COPY main.InvestorInvestDealRelation FROM 'data/InvestorInvestDealRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

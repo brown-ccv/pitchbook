@@ -29,7 +29,7 @@ COMMENT ON COLUMN main.InvestorLimitedPartnerRelation."TotalCommitments" IS 'Cou
 COMMENT ON COLUMN main.InvestorLimitedPartnerRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.InvestorLimitedPartnerRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.InvestorLimitedPartnerRelation FROM 'data/InvestorLimitedPartnerRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_investorlimitedpartnerrelation_investorid ON main.InvestorLimitedPartnerRelation ("InvestorID");
 CREATE INDEX idx_investorlimitedpartnerrelation_rowid ON main.InvestorLimitedPartnerRelation ("RowID");
-
-\COPY main.InvestorLimitedPartnerRelation FROM 'data/InvestorLimitedPartnerRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

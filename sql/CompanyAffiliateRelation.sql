@@ -33,7 +33,7 @@ COMMENT ON COLUMN main.CompanyAffiliateRelation."HQCountry" IS 'Country where th
 COMMENT ON COLUMN main.CompanyAffiliateRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyAffiliateRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyAffiliateRelation FROM 'data/CompanyAffiliateRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companyaffiliaterelation_companyid ON main.CompanyAffiliateRelation ("CompanyID");
 CREATE INDEX idx_companyaffiliaterelation_rowid ON main.CompanyAffiliateRelation ("RowID");
-
-\COPY main.CompanyAffiliateRelation FROM 'data/CompanyAffiliateRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

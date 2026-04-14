@@ -63,7 +63,7 @@ COMMENT ON COLUMN main.DealCapTableRelation."GeneralVotingRights" IS '''Yes'' if
 COMMENT ON COLUMN main.DealCapTableRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.DealCapTableRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.DealCapTableRelation FROM 'data/DealCapTableRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_dealcaptablerelation_dealid ON main.DealCapTableRelation ("DealID");
 CREATE INDEX idx_dealcaptablerelation_rowid ON main.DealCapTableRelation ("RowID");
-
-\COPY main.DealCapTableRelation FROM 'data/DealCapTableRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

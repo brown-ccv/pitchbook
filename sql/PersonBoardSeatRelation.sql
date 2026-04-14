@@ -31,7 +31,7 @@ COMMENT ON COLUMN main.PersonBoardSeatRelation."EndDate" IS 'Date the person lef
 COMMENT ON COLUMN main.PersonBoardSeatRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.PersonBoardSeatRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.PersonBoardSeatRelation FROM 'data/PersonBoardSeatRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_personboardseatrelation_personid ON main.PersonBoardSeatRelation ("PersonID");
 CREATE INDEX idx_personboardseatrelation_rowid ON main.PersonBoardSeatRelation ("RowID");
-
-\COPY main.PersonBoardSeatRelation FROM 'data/PersonBoardSeatRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

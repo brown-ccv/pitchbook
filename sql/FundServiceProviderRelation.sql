@@ -25,7 +25,7 @@ COMMENT ON COLUMN main.FundServiceProviderRelation."ServiceToName" IS 'Name of t
 COMMENT ON COLUMN main.FundServiceProviderRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.FundServiceProviderRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.FundServiceProviderRelation FROM 'data/FundServiceProviderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_fundserviceproviderrelation_fundid ON main.FundServiceProviderRelation ("FundID");
 CREATE INDEX idx_fundserviceproviderrelation_rowid ON main.FundServiceProviderRelation ("RowID");
-
-\COPY main.FundServiceProviderRelation FROM 'data/FundServiceProviderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

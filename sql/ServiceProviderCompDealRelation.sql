@@ -27,7 +27,7 @@ COMMENT ON COLUMN main.ServiceProviderCompDealRelation."DealType" IS 'Identifies
 COMMENT ON COLUMN main.ServiceProviderCompDealRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.ServiceProviderCompDealRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.ServiceProviderCompDealRelation FROM 'data/ServiceProviderCompDealRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_serviceprovidercompdealrelation_serviceproviderid ON main.ServiceProviderCompDealRelation ("ServiceProviderID");
 CREATE INDEX idx_serviceprovidercompdealrelation_rowid ON main.ServiceProviderCompDealRelation ("RowID");
-
-\COPY main.ServiceProviderCompDealRelation FROM 'data/ServiceProviderCompDealRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

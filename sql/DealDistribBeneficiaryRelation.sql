@@ -37,7 +37,7 @@ COMMENT ON COLUMN main.DealDistribBeneficiaryRelation."Currency" IS 'Currency in
 COMMENT ON COLUMN main.DealDistribBeneficiaryRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.DealDistribBeneficiaryRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.DealDistribBeneficiaryRelation FROM 'data/DealDistribBeneficiaryRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_dealdistribbeneficiaryrelation_dealid ON main.DealDistribBeneficiaryRelation ("DealID");
 CREATE INDEX idx_dealdistribbeneficiaryrelation_rowid ON main.DealDistribBeneficiaryRelation ("RowID");
-
-\COPY main.DealDistribBeneficiaryRelation FROM 'data/DealDistribBeneficiaryRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

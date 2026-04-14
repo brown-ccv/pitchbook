@@ -17,7 +17,7 @@ COMMENT ON COLUMN main.CompanySicCodeRelation."SicDescription" IS 'Text descript
 COMMENT ON COLUMN main.CompanySicCodeRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanySicCodeRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanySicCodeRelation FROM 'data/CompanySicCodeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companysiccoderelation_companyid ON main.CompanySicCodeRelation ("CompanyID");
 CREATE INDEX idx_companysiccoderelation_rowid ON main.CompanySicCodeRelation ("RowID");
-
-\COPY main.CompanySicCodeRelation FROM 'data/CompanySicCodeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

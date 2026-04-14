@@ -131,7 +131,7 @@ COMMENT ON COLUMN main.DealLoanRelation."DebtCommentary" IS 'External notes';
 COMMENT ON COLUMN main.DealLoanRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.DealLoanRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.DealLoanRelation FROM 'data/DealLoanRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_dealloanrelation_dealid ON main.DealLoanRelation ("DealID");
 CREATE INDEX idx_dealloanrelation_rowid ON main.DealLoanRelation ("RowID");
-
-\COPY main.DealLoanRelation FROM 'data/DealLoanRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

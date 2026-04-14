@@ -115,7 +115,7 @@ COMMENT ON COLUMN main.CompanyPublicFinancialQuarterlyRelation."Calculated" IS '
 COMMENT ON COLUMN main.CompanyPublicFinancialQuarterlyRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyPublicFinancialQuarterlyRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyPublicFinancialQuarterlyRelation FROM 'data/CompanyPublicFinancialQuarterlyRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companypublicfinancialquarterlyrelation_companyid ON main.CompanyPublicFinancialQuarterlyRelation ("CompanyID");
 CREATE INDEX idx_companypublicfinancialquarterlyrelation_rowid ON main.CompanyPublicFinancialQuarterlyRelation ("RowID");
-
-\COPY main.CompanyPublicFinancialQuarterlyRelation FROM 'data/CompanyPublicFinancialQuarterlyRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

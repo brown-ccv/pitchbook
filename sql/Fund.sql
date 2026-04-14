@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS main.Fund CASCADE;
 
 CREATE TABLE main.Fund (
-    "FundID" text PRIMARY KEY,  -- Primary key for the fund. By default the unique PitchBook ID (PbID) will be deli
+    "FundID" text,  -- Primary key for the fund. By default the unique PitchBook ID (PbID) will be deli
     "FundName" text,  -- Name of the fund
     "FundFormerName" text,  -- Former name(s) of the fund
     "FundNo" text,  -- Number of the fund
@@ -114,3 +114,5 @@ COMMENT ON COLUMN main.Fund."RowID" IS 'Unique identifier for the row. This fiel
 COMMENT ON COLUMN main.Fund."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.Fund FROM 'data/Fund.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.Fund ADD PRIMARY KEY ("FundID");

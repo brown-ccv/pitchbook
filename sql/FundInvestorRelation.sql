@@ -19,7 +19,7 @@ COMMENT ON COLUMN main.FundInvestorRelation."InvestorWebsite" IS 'Website of the
 COMMENT ON COLUMN main.FundInvestorRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.FundInvestorRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.FundInvestorRelation FROM 'data/FundInvestorRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_fundinvestorrelation_fundid ON main.FundInvestorRelation ("FundID");
 CREATE INDEX idx_fundinvestorrelation_rowid ON main.FundInvestorRelation ("RowID");
-
-\COPY main.FundInvestorRelation FROM 'data/FundInvestorRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

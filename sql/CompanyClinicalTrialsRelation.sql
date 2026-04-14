@@ -57,7 +57,7 @@ COMMENT ON COLUMN main.CompanyClinicalTrialsRelation."EntityRole" IS 'Choose to 
 COMMENT ON COLUMN main.CompanyClinicalTrialsRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyClinicalTrialsRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyClinicalTrialsRelation FROM 'data/CompanyClinicalTrialsRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companyclinicaltrialsrelation_companyid ON main.CompanyClinicalTrialsRelation ("CompanyID");
 CREATE INDEX idx_companyclinicaltrialsrelation_rowid ON main.CompanyClinicalTrialsRelation ("RowID");
-
-\COPY main.CompanyClinicalTrialsRelation FROM 'data/CompanyClinicalTrialsRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

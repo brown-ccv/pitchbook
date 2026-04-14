@@ -39,7 +39,7 @@ COMMENT ON COLUMN main.DealTrancheRelation."InvestorID3" IS 'Unique identifier f
 COMMENT ON COLUMN main.DealTrancheRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.DealTrancheRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.DealTrancheRelation FROM 'data/DealTrancheRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_dealtrancherelation_dealid ON main.DealTrancheRelation ("DealID");
 CREATE INDEX idx_dealtrancherelation_rowid ON main.DealTrancheRelation ("RowID");
-
-\COPY main.DealTrancheRelation FROM 'data/DealTrancheRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS main.Person CASCADE;
 
 CREATE TABLE main.Person (
-    "PersonID" text PRIMARY KEY,  -- Primary key for the person. By default the unique PitchBook ID (PbID) will be de
+    "PersonID" text,  -- Primary key for the person. By default the unique PitchBook ID (PbID) will be de
     "FullName" text,  -- Full name of the person
     "LastName" text,  -- Last name of the person
     "FirstName" text,  -- First name of the person
@@ -96,3 +96,5 @@ COMMENT ON COLUMN main.Person."RowID" IS 'Unique identifier for the row. This fi
 COMMENT ON COLUMN main.Person."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.Person FROM 'data/Person.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.Person ADD PRIMARY KEY ("PersonID");

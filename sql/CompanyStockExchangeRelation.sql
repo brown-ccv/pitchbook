@@ -21,7 +21,7 @@ COMMENT ON COLUMN main.CompanyStockExchangeRelation."ListingCountry" IS 'Country
 COMMENT ON COLUMN main.CompanyStockExchangeRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.CompanyStockExchangeRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.CompanyStockExchangeRelation FROM 'data/CompanyStockExchangeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_companystockexchangerelation_companyid ON main.CompanyStockExchangeRelation ("CompanyID");
 CREATE INDEX idx_companystockexchangerelation_rowid ON main.CompanyStockExchangeRelation ("RowID");
-
-\COPY main.CompanyStockExchangeRelation FROM 'data/CompanyStockExchangeRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

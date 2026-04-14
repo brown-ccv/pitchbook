@@ -81,7 +81,7 @@ COMMENT ON COLUMN main.FundPortfolioHoldingsRelation."Unitranche" IS 'Indicates 
 COMMENT ON COLUMN main.FundPortfolioHoldingsRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.FundPortfolioHoldingsRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.FundPortfolioHoldingsRelation FROM 'data/FundPortfolioHoldingsRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_fundportfolioholdingsrelation_fundid ON main.FundPortfolioHoldingsRelation ("FundID");
 CREATE INDEX idx_fundportfolioholdingsrelation_rowid ON main.FundPortfolioHoldingsRelation ("RowID");
-
-\COPY main.FundPortfolioHoldingsRelation FROM 'data/FundPortfolioHoldingsRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS main.Company CASCADE;
 
 CREATE TABLE main.Company (
-    "CompanyID" text PRIMARY KEY,  -- Primary key for the company. By default the unique PitchBook ID (PBId) will be d
+    "CompanyID" text,  -- Primary key for the company. By default the unique PitchBook ID (PBId) will be d
     "CompanyName" text,  -- Name of the company
     "CompanyAlsoKnownAs" text,  -- Other name(s) the company goes by, comma separated if multiple names exist
     "CompanyFormerName" text,  -- Former name(s) of the company
@@ -264,3 +264,5 @@ COMMENT ON COLUMN main.Company."RowID" IS 'Unique identifier for the row. This f
 COMMENT ON COLUMN main.Company."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.Company FROM 'data/Company.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.Company ADD PRIMARY KEY ("CompanyID");

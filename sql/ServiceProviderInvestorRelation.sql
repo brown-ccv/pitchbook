@@ -23,7 +23,7 @@ COMMENT ON COLUMN main.ServiceProviderInvestorRelation."ServiceProvided" IS 'Typ
 COMMENT ON COLUMN main.ServiceProviderInvestorRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.ServiceProviderInvestorRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.ServiceProviderInvestorRelation FROM 'data/ServiceProviderInvestorRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_serviceproviderinvestorrelation_serviceproviderid ON main.ServiceProviderInvestorRelation ("ServiceProviderID");
 CREATE INDEX idx_serviceproviderinvestorrelation_rowid ON main.ServiceProviderInvestorRelation ("RowID");
-
-\COPY main.ServiceProviderInvestorRelation FROM 'data/ServiceProviderInvestorRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

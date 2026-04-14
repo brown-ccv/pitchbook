@@ -7,7 +7,7 @@ CREATE TABLE main.Deal (
     "CompanyID" text,  -- Unique identifier for the company involved in the deal. By default the unique Pi
     "CompanyName" text,  -- Name of the company receiving the financing
     "DealNo" integer,  -- Number given to the financial round based on the financing history of the compan
-    "DealID" text PRIMARY KEY,  -- Primary key for the deal. By default the unique PitchBook ID (PbID) will be deli
+    "DealID" text,  -- Primary key for the deal. By default the unique PitchBook ID (PbID) will be deli
     "DealDate" date,  -- Date the financing event was completed
     "AnnouncedDate" date,  -- Date the financing event was announced
     "DealSize" float8,  -- Total amount of capital invested into a company by an investor or group of inves
@@ -230,3 +230,5 @@ COMMENT ON COLUMN main.Deal."RowID" IS 'Unique identifier for the row. This fiel
 COMMENT ON COLUMN main.Deal."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
 \COPY main.Deal FROM 'data/Deal.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
+ALTER TABLE main.Deal ADD PRIMARY KEY ("DealID");

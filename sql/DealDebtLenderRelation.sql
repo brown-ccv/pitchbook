@@ -105,7 +105,7 @@ COMMENT ON COLUMN main.DealDebtLenderRelation."TotalNewDebt" IS 'The net increas
 COMMENT ON COLUMN main.DealDebtLenderRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.DealDebtLenderRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.DealDebtLenderRelation FROM 'data/DealDebtLenderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_dealdebtlenderrelation_dealid ON main.DealDebtLenderRelation ("DealID");
 CREATE INDEX idx_dealdebtlenderrelation_rowid ON main.DealDebtLenderRelation ("RowID");
-
-\COPY main.DealDebtLenderRelation FROM 'data/DealDebtLenderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

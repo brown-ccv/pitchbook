@@ -23,7 +23,7 @@ COMMENT ON COLUMN main.LPServiceProviderRelation."ServiceProviderStatus" IS 'Cur
 COMMENT ON COLUMN main.LPServiceProviderRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
 COMMENT ON COLUMN main.LPServiceProviderRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
 
+\COPY main.LPServiceProviderRelation FROM 'data/LPServiceProviderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
+
 CREATE INDEX idx_lpserviceproviderrelation_limitedpartnerid ON main.LPServiceProviderRelation ("LimitedPartnerID");
 CREATE INDEX idx_lpserviceproviderrelation_rowid ON main.LPServiceProviderRelation ("RowID");
-
-\COPY main.LPServiceProviderRelation FROM 'data/LPServiceProviderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
