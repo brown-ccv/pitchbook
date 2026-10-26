@@ -65,7 +65,7 @@ The Excel data dictionary belongs at `docs/Brown_University_Academic_Feed_w__Pub
 just generate
 ```
 
-This runs `src/generate_sql.py`, which reads the Excel workbook and writes:
+This runs `src/main.py`, which reads the Excel workbook and writes:
 - One `.sql` file per table into `sql/`
 - A fresh `justfile` with loading recipes
 
