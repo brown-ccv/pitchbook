@@ -18,19 +18,6 @@ CREATE TABLE main.LPMandateRelation (
     "LastUpdated" date  -- Date showing the time any data point in the row was last updated. This column is
 );
 
-COMMENT ON COLUMN main.LPMandateRelation."LimitedPartnerID" IS 'Unique identifier for the limited partner (PbID). Relates to the unique LimitedP';
-COMMENT ON COLUMN main.LPMandateRelation."MandateStatus" IS 'Status of the mandate';
-COMMENT ON COLUMN main.LPMandateRelation."MandateAmount" IS 'Amount of the mandate';
-COMMENT ON COLUMN main.LPMandateRelation."AnnouncedDate" IS 'Date mandate was announced';
-COMMENT ON COLUMN main.LPMandateRelation."MandateStartDate" IS 'Date the mandate started';
-COMMENT ON COLUMN main.LPMandateRelation."MandateEndDate" IS 'Date the mandate will end';
-COMMENT ON COLUMN main.LPMandateRelation."TargetedFundTypes" IS 'Type of funds targeted by the mandate';
-COMMENT ON COLUMN main.LPMandateRelation."TargetedRegions" IS 'Regions targeted by the mandate';
-COMMENT ON COLUMN main.LPMandateRelation."FundManagerPreferences" IS 'Preferences held by the fund manager';
-COMMENT ON COLUMN main.LPMandateRelation."MandateDescription" IS 'Description of the mandate';
-COMMENT ON COLUMN main.LPMandateRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
-COMMENT ON COLUMN main.LPMandateRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
-
 \COPY main.LPMandateRelation FROM 'data/LPMandateRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
 
 CREATE INDEX idx_lpmandaterelation_limitedpartnerid ON main.LPMandateRelation ("LimitedPartnerID");

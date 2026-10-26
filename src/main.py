@@ -154,16 +154,6 @@ def generate_table_sql(table: Table) -> str:
     lines.append(");")
     lines.append("")
 
-    # Add column comments via COMMENT ON for documentation
-    for col in table.columns:
-        if col.comment:
-            lines.append(
-                f"COMMENT ON COLUMN {qualified}.\"{col.name}\" IS '{col.comment}';"
-            )
-
-    if any(c.comment for c in table.columns):
-        lines.append("")
-
     # COPY command — runs against an unindexed heap for fast bulk load
     lines.append(
         f"\\COPY {qualified} FROM '{DATA_DIR}/{table.name}.csv' "

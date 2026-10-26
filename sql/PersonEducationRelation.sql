@@ -13,14 +13,6 @@ CREATE TABLE main.PersonEducationRelation (
     "LastUpdated" date  -- Date showing the time any data point in the row was last updated. This column is
 );
 
-COMMENT ON COLUMN main.PersonEducationRelation."PersonID" IS 'Unique identifier for the person (PbID). Relates to the unique PersonID in Perso';
-COMMENT ON COLUMN main.PersonEducationRelation."Degree" IS 'Type of degree attained';
-COMMENT ON COLUMN main.PersonEducationRelation."Major_Concentration" IS 'Major or concentration attained';
-COMMENT ON COLUMN main.PersonEducationRelation."Institute" IS 'Name of the institution the person attended';
-COMMENT ON COLUMN main.PersonEducationRelation."GraduatingYear" IS 'Year of graduation';
-COMMENT ON COLUMN main.PersonEducationRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
-COMMENT ON COLUMN main.PersonEducationRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
-
 \COPY main.PersonEducationRelation FROM 'data/PersonEducationRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
 
 CREATE INDEX idx_personeducationrelation_personid ON main.PersonEducationRelation ("PersonID");
