@@ -146,43 +146,35 @@ def generate_table_sql(table: Table) -> str:
     num_cols = len(table.columns)
     for i, col in enumerate(table.columns):
         pg_type = col.data_type
-        constraint = " PRIMARY KEY" if (col.name == pk_col) else ""
         comma = "," if i < num_cols - 1 else ""
         comment_str = f"  -- {col.comment}" if col.comment else ""
-        col_defs.append(f"    \"{col.name}\" {pg_type}{constraint}{comma}{comment_str}")
+        col_defs.append(f"    \"{col.name}\" {pg_type}{comma}{comment_str}")
 
     lines.append("\n".join(col_defs))
     lines.append(");")
     lines.append("")
 
-    # Add column comments via COMMENT ON for documentation
-    for col in table.columns:
-        if col.comment:
-            lines.append(
-                f"COMMENT ON COLUMN {qualified}.\"{col.name}\" IS '{col.comment}';"
-            )
-
-    if any(c.comment for c in table.columns):
-        lines.append("")
-
-    # Indexes for relation tables
-    if not table.is_primary and table.columns:
-        first_col = table.columns[0].name
-        idx_name = f"idx_{table.name}_{first_col}".lower()
-        lines.append(f"CREATE INDEX {idx_name} ON {qualified} (\"{first_col}\");")
-        # Index on RowID if present
-        if any(c.name == "RowID" for c in table.columns):
-            lines.append(
-                f"CREATE INDEX idx_{table.name.lower()}_rowid ON {qualified} (\"RowID\");"
-            )
-        lines.append("")
-
-    # COPY command
+    # COPY command — runs against an unindexed heap for fast bulk load
     lines.append(
         f"\\COPY {qualified} FROM '{DATA_DIR}/{table.name}.csv' "
         f"WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');"
     )
     lines.append("")
+
+    # Build PK / indexes AFTER the load
+    if pk_col:
+        lines.append(f"ALTER TABLE {qualified} ADD PRIMARY KEY (\"{pk_col}\");")
+        lines.append("")
+
+    if not table.is_primary and table.columns:
+        first_col = table.columns[0].name
+        idx_name = f"idx_{table.name}_{first_col}".lower()
+        lines.append(f"CREATE INDEX {idx_name} ON {qualified} (\"{first_col}\");")
+        if any(c.name == "RowID" for c in table.columns):
+            lines.append(
+                f"CREATE INDEX idx_{table.name.lower()}_rowid ON {qualified} (\"RowID\");"
+            )
+        lines.append("")
 
     return "\n".join(lines)
 

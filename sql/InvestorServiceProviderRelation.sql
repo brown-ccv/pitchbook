@@ -13,15 +13,7 @@ CREATE TABLE main.InvestorServiceProviderRelation (
     "LastUpdated" date  -- Date showing the time any data point in the row was last updated. This column is
 );
 
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."InvestorID" IS 'Unique identifier for the investor (PbID). Relates to unique InvestorID in Inves';
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."ServiceProviderID" IS 'Unique identifier for the service provider (PbID)';
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."ServiceProviderName" IS 'The formal name of the service provider used on the service provider''s PitchBoo';
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."ServiceProvided" IS 'The type of service provided to the investor (e.g. Legal Advisor, Advisor: Gener';
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."ServiceProviderType" IS 'Primary type of service provider';
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."RowID" IS 'Unique identifier for the row. This field can be ignored or used at the client''';
-COMMENT ON COLUMN main.InvestorServiceProviderRelation."LastUpdated" IS 'Date showing the time any data point in the row was last updated. This column is';
+\COPY main.InvestorServiceProviderRelation FROM 'data/InvestorServiceProviderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');
 
 CREATE INDEX idx_investorserviceproviderrelation_investorid ON main.InvestorServiceProviderRelation ("InvestorID");
 CREATE INDEX idx_investorserviceproviderrelation_rowid ON main.InvestorServiceProviderRelation ("RowID");
-
-\COPY main.InvestorServiceProviderRelation FROM 'data/InvestorServiceProviderRelation.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8', NULL '');

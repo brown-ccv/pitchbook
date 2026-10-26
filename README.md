@@ -114,7 +114,7 @@ pitchbook/
 ├── docs/                # Excel data dictionary
 ├── sql/                 # Generated SQL scripts (one per table)
 ├── src/
-│   └── generate_sql.py  # Data dictionary parser and SQL generator
+│   └── main.py          # Data dictionary parser and SQL generator
 ├── justfile             # Generated command runner recipes
 ├── pyproject.toml       # Python project metadata
 └── uv.lock              # Locked dependencies
@@ -122,7 +122,7 @@ pitchbook/
 
 ## How It Works
 
-`src/generate_sql.py` does the following:
+`src/main.py` does the following:
 
 1. **Parses the workbook** — opens the Excel file with `openpyxl`, skipping the `TrackingChanges` and `Summary` sheets. Each remaining sheet defines one table.
 2. **Extracts columns** — reads the table name from cell B1 and column definitions (name, type, description) starting at row 6.
@@ -130,7 +130,6 @@ pitchbook/
 4. **Generates SQL** — for each table, produces a `.sql` file containing:
    - `DROP TABLE IF EXISTS ... CASCADE`
    - `CREATE TABLE` with typed columns and inline comments
-   - `COMMENT ON COLUMN` statements for full column documentation
    - Indexes on the first column and `RowID` (relation tables only)
    - A `\COPY` command to load the corresponding CSV from `data/`
 5. **Generates the justfile** — writes a `justfile` with recipes for schema creation, individual table loading, parallel bulk loading, and full reload.

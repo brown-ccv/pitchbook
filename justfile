@@ -2,9 +2,7 @@
 
 # Default database connection (override: just db=mydb load-all)
 db := "pitchbook"
-
-# Parallelism level (override: just jobs=16 load-all)
-jobs := "8"
+host := "phlpgmoodyscit.services.brown.edu"
 
 # Regenerate SQL from data dictionary
 generate:
@@ -12,21 +10,21 @@ generate:
 
 # Create the schema (run once before loading)
 create-schema:
-    psql -d {{db}} -c "CREATE SCHEMA IF NOT EXISTS main;"
+    psql --dbname {{db}} --host {{host}} -c "CREATE SCHEMA IF NOT EXISTS main;"
 
 # Load a single table
 load table:
-    psql -d {{db}} -f sql/{{table}}.sql
+    psql --dbname {{db}} --host {{host}} --password --file sql/{{table}}.sql
 
-# Load all tables in parallel
+# Load all tables sequentially
 load-all: create-schema
-    @echo "Loading 79 tables with {{jobs}} parallel jobs..."
-    ls sql/*.sql | xargs -P {{jobs}} -I {} psql -d {{db}} -f {}
+    @echo "Loading 79 tables sequentially..."
+    set -e; for f in sql/*.sql; do psql --dbname {{db}} --host {{host}} --file $f; done
     @echo "All tables loaded!"
 
 # Drop the entire schema (destructive)
 drop-schema:
-    psql -d {{db}} -c "DROP SCHEMA IF EXISTS main CASCADE;"
+    psql --dbname {{db}} --host {{host}} -c "DROP SCHEMA IF EXISTS main CASCADE;"
 
 # Full reload: drop, recreate, load
 reload: drop-schema load-all
